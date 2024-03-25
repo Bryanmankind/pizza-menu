@@ -58,6 +58,12 @@ function App() {
   );
 }
 
+function Header() {}
+
+function Mene() {}
+
+function Foter() {}
+
 function Pizza() {
   return (
     <div>
