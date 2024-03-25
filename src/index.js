@@ -50,7 +50,7 @@ const pizzaData = [
 function App() {
   return (
     <div>
-      <h1>Hello World!!!</h1>
+      <Header />
       <Pizza />
       <Pizza />
       <Pizza />
@@ -58,7 +58,9 @@ function App() {
   );
 }
 
-function Header() {}
+function Header() {
+  return <h1>Fast React Pizza Co.</h1>;
+}
 
 function Mene() {}
 
