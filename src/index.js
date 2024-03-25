@@ -50,7 +50,7 @@ const pizzaData = [
 //  React Component
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -61,17 +61,21 @@ function App() {
 function Header() {
   const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
 
-  return <h1 style={style}>Fast React Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1 style={style}>Fast React Pizza Co.</h1>;
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div className="menu">
+    <main className="menu">
       <h1>Here is our Menu</h1>
       <Pizza />
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 
@@ -85,16 +89,18 @@ function Footer() {
   // if (hours >= openHours && hours <= closingHours)
   //   alert("we're currently open!");
   // else alert("Sorry we are close!!!");
-  // return (
-  //   <footer>{new Date().toLocaleTimeString()}.we're currently open</footer>
-  // );
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()}.we're currently open
+    </footer>
+  );
 }
 
 function Pizza() {
   return (
     <div>
       <img src="pizzas/salamino.jpg" alt="salamino" />
-      <h2>Pizza Salamino</h2>
+      <h3>Pizza Salamino</h3>
       <p>Tomato, mozarella, and pepperoni</p>
     </div>
   );
