@@ -52,6 +52,8 @@ function App() {
     <div>
       <h1>Hello World!!!</h1>
       <Pizza />
+      <Pizza />
+      <Pizza />
     </div>
   );
 }
@@ -59,6 +61,7 @@ function App() {
 function Pizza() {
   return (
     <div>
+      <img src="pizzas/salamino.jpg" alt="salamino" />
       <h2>Pizza Salamino</h2>
       <p>Tomato, mozarella, and pepperoni</p>
     </div>
