@@ -52,8 +52,7 @@ function App() {
   return (
     <div>
       <Header />
-      <Pizza />
-      <Pizza />
+      <Menu />
       <Footer />
     </div>
   );
@@ -65,7 +64,16 @@ function Header() {
   return <h1 style={style}>Fast React Pizza Co.</h1>;
 }
 
-function Menu() {}
+function Menu() {
+  return (
+    <div className="menu">
+      <h1>Here is our Menu</h1>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </div>
+  );
+}
 
 function Footer() {
   const hours = new Date().getHours();
