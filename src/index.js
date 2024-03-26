@@ -69,15 +69,17 @@ function Header() {
 }
 
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizzas = pizzas.length;
+
   return (
     <main className="menu">
       <h1>Here is our Menu</h1> 
-
+      {numPizzas > 0 && (
       <ul className="pizzas">
-      {pizzaData.map((pizza) => (<Pizza pizaObject={pizza} key={pizza.name}/>))}
-      </ul>
-      {/* <Pizza name="Pizza Salamino" ingredients="Tomato, mozarella, and pepperoni" photoname="pizzas/salamino.jpg" price={10}/>
-      <Pizza name="Pizza Prosciutto" ingredients="Tomato, mozarella, ham, aragula, and burrata cheese" photoname="pizzas/spinaci.jpg" price={18}/> */}
+      {pizzas.map((pizza) => (<Pizza pizaObject={pizza} key={pizza.name}/>))}
+      </ul>)}
+      
     </main>
   );
 }
@@ -105,7 +107,14 @@ function Footer() {
   // else alert("Sorry we are close!!!");
   return (
     <footer className="footer">
-      {new Date().toLocaleTimeString()}.we're currently open
+      {isOpen && (
+        <div className="order">
+          <p>
+            we're open until {closingHours}:00. come visit us or order online.
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
