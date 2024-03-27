@@ -74,26 +74,32 @@ function Menu() {
 
   return (
     <main className="menu">
-      <h1>Here is our Menu</h1> 
+      <h2>Here is our Menu</h2> 
+      
       {numPizzas > 0 ? (
+        <>
+        <p>
+        Six creative dishes to choose from. Best African food for you.
+      </p>
       <ul className="pizzas">
       {pizzas.map((pizza) => (<Pizza pizaObject={pizza} key={pizza.name}/>))}
-      </ul>): (<p>we're still working on our menu. please come baack later.</p>)}
+      </ul>
+      </>): (<p>we're still working on our menu. please come baack later.</p>)}
       
     </main>
   );
 }
 
-function Pizza(props) {
+function Pizza({pizaObject}) {
 
-  if(props.pizaObject.soldOut) return null;
+  // if(pizaObject.soldOut) return null;
 
   return (
-    <li className="pizza">
-      <img src={props.pizaObject.photoName} alt={props.pizaObject.name} />
-      <h3>{props.pizaObject.name}</h3>
-      <p>{props.pizaObject.ingredients}</p>
-      <p>{props.pizaObject.price}</p>
+    <li className={`pizza ${pizaObject.soldOut ? "sold-out" : ""}`}>
+      <img src={pizaObject.photoName} alt={pizaObject.name} />
+      <h3>{pizaObject.name}</h3>
+      <p>{pizaObject.ingredients}</p>
+      <span>{pizaObject.soldOut ? "Sold Out" : pizaObject.price}</span>
     </li>
   );
 }
@@ -104,23 +110,22 @@ function Footer() {
   const openHours = 8;
   const closingHours = 21;
   const isOpen = hours >= openHours && hours <= closingHours;
-  console.log(isOpen);
 
   
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order openHours="openHours" closingHours="closingHours" />
+        <Order  openHours={openHours} closingHours={closingHours} />
       ): (<p>we are closed, we will be back at {openHours}:00 </p>)}
     </footer>
   );
 }
 
-function Order(props) {
+function Order({openHours, closingHours}) {
   return (
     <div className="order">
           <p>
-            we're open until {props.closingHours}:00. come visit us or order online.
+            we're open from {openHours}:00 to {closingHours}:00. come visit us or order online.
           </p>
           <button className="btn">Order</button>
   </div>
