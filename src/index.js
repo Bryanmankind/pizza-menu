@@ -50,88 +50,83 @@ const pizzaData = [
 //  React Component
 function App() {
   return (
-    <div className="container">
-      <Header />
-      <Menu />
-      <Footer />
-    </div>
-  );
+    <>
+    <Header/>
+    <Menu />
+    <Footer/>
+    </>
+  )
 }
 
-function Header() {
+function Header () {
   const style = { color: "red", fontSize: "48px", textTransform: "uppercase" };
 
   return (
     <header className="header">
-      <h1 style={style}>Fast React Pizza Co.</h1>;
+      <h1 style={style}>Fast React Pizza Co.</h1>
     </header>
-  );
+  )
 }
 
-function Menu() {
-  const pizzas = pizzaData;
-  const numPizzas = pizzas.length;
+function Menu () {
+
+  const pizzaMenu = pizzaData;
+
+  const numpizzaMenu = pizzaMenu.length
 
   return (
-    <main className="menu">
-      <h2>Here is our Menu</h2> 
-      
-      {numPizzas > 0 ? (
-        <>
-        <p>
-        Six creative dishes to choose from. Best African food for you.
-      </p>
+    <main className='menu'>
+
+      <h2>HERE IS OUR MENU</h2>
+
+      {numpizzaMenu > 0 ? 
+      <>
+      <p>A collection of good different African dishes for you.</p>
       <ul className="pizzas">
-      {pizzas.map((pizza) => (<Pizza pizaObject={pizza} key={pizza.name}/>))}
-      </ul>
-      </>): (<p>we're still working on our menu. please come baack later.</p>)}
-      
+     { pizzaMenu.map((pizza) => (<Pizza pizzaMenuObject={pizza} key={pizza.name} />))}
+      </ul> </>: ("We are still working on our menu. Come back in 24hrs time")
+      }
+
     </main>
-  );
+  )
 }
 
-function Pizza({pizaObject}) {
-
-  // if(pizaObject.soldOut) return null;
-
+function Pizza ({pizzaMenuObject}) {
   return (
-    <li className={`pizza ${pizaObject.soldOut ? "sold-out" : ""}`}>
-      <img src={pizaObject.photoName} alt={pizaObject.name} />
-      <h3>{pizaObject.name}</h3>
-      <p>{pizaObject.ingredients}</p>
-      <span>{pizaObject.soldOut ? "Sold Out" : pizaObject.price}</span>
+    <li className={`pizza ${pizzaMenuObject.soldOut ? "sold-out" : ""}`}>
+   <img src={pizzaMenuObject.photoName} alt={pizzaMenuObject.name} />
+   <h3>{pizzaMenuObject.name}</h3>
+   <p>{pizzaMenuObject.ingredients}</p>
+   <span>{pizzaMenuObject.soldOut ? "soldOut" : pizzaMenuObject.price}</span>
     </li>
-  );
-}
+  )
 
+}
 
 function Footer() {
-  const hours = new Date().getHours();
+  const hour = new Date().getHours();
   const openHours = 8;
   const closingHours = 21;
-  const isOpen = hours >= openHours && hours <= closingHours;
-
-  
+  const isOpen = hour >= openHours && hour <= closingHours;
   return (
-    <footer className="footer">
-      {isOpen ? (
-        <Order  openHours={openHours} closingHours={closingHours} />
-      ): (<p>we are closed, we will be back at {openHours}:00 </p>)}
+    <footer className='footer'>
+      {isOpen ? (<Order openHours={openHours} closingHours={closingHours}/>) :  (<p>
+        `we will be open at ${openHours}`
+      </p> )}
     </footer>
-  );
+  )
 }
 
-function Order({openHours, closingHours}) {
+function Order ({openHours, closingHours}) {
   return (
-    <div className="order">
-          <p>
-            we're open from {openHours}:00 to {closingHours}:00. come visit us or order online.
-          </p>
-          <button className="btn">Order</button>
-  </div>
-  );
-  
+    <div className='order'>
+      <p>we are open from {openHours}am to {closingHours}pm, come visit us or make your orders on line</p>
+
+      <button className='btn'>Order</button>
+    </div>
+  )
 }
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
